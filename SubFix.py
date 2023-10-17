@@ -24,19 +24,19 @@ def ass_mod(output_folder, ass_filepath):
             if len(parts) > 3 and parts[0] == "Default" or "Default Top" or "Italics" or "Italics Top" or "Narrator" or "Narrator Top" or "Overlap" or "Internat" or "Internal Top" or "Flashback" or "Flashback Internal" or "Flashback - Top" or "Flashback - Inception" :
                 parts[2] = str(int(round(float(parts[2]) * 3.27)))
                 parts[16] = str(int(round(float(parts[16]) * 1.77)))
-                parts[19] = str(int(int(parts[19]) * 30))
-                parts[20] = str(int(int(parts[20]) * 30))
+                parts[19] = str(int(int(parts[19]) * 17.7))
+                parts[20] = str(int(int(parts[20]) * 17.7))
                 parts[21] = str(int(int(parts[21]) * 3))
             else:
                 parts[2] = str(int(round(float(parts[2]) * 3.27)))
                 parts[16] = str(int(round(float(parts[16]) * 3.27)))
                 parts[19] = str(int(round(float(parts[19]) * 3.27)))
                 parts[20] = str(int(round(float(parts[20]) * 3.27)))
-                parts[21] = str(int(round(float(parts[21]) * 3.27)))
+                parts[21] = str(int(int(parts[21]) * 3))
             new_line = ",".join(parts)
             new_lines.append(new_line)       
         elif line.startswith("Dialogue:"):
-            new_line = re.sub(r'\\fs(\d+)', lambda x: f"\\fs{str(int(int(x.group(1)) * 5))}", line)
+            new_line = re.sub(r'\\fs([\d]+)', lambda x: f"\\fs{str(int(round(float(x.group(1)) * 3.27)))}", line)
             new_line = re.sub(r'\\pos\(([\d.]+),([\d.]+)\)', lambda x: f"\\pos({str(round(float(x.group(1)) * 3.01, 2))},{str(round(float(x.group(2)) * 3.01, 2))})", new_line)
             new_lines.append(new_line)
         else:
