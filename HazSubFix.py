@@ -32,7 +32,7 @@ def set_dark_theme(app):
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        
+
         # Inizializza file_path come stringa vuota
         self.file_path = ""
 
@@ -40,13 +40,25 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Crea il box per la selezione dei file
         self.file_selector = QtWidgets.QPushButton("Seleziona file o cartella")
+        self.file_selector.setFixedSize(140, 25)
         self.file_selector.clicked.connect(self.select_file)
         self.file_selector.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF")
 
         # Crea il box per mostrare il percorso del file selezionato
         self.file_path_display = QtWidgets.QLineEdit()
+        self.file_path_display.setFixedSize(460, 25)
         self.file_path_display.setReadOnly(False)
         self.file_path_display.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
+
+        # Crea il selettore per la risoluzione di partenza
+        self.combo = QtWidgets.QComboBox()
+        self.combo.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
+        self.combo.addItems(["Crunchy", "360p", "480p", "720p"])
+        self.combo.currentTextChanged.connect(self.source_res)
+
+        # Crea la casella di controllo "usa Gandhi Sansi"
+        self.font_checkbox = QtWidgets.QCheckBox("usa Gandhi Sansi")
+        self.font_checkbox.stateChanged.connect(self.switch_font)
 
         # Crea il box per l'output del terminale
         self.terminal_output = QtWidgets.QTextEdit()
@@ -56,7 +68,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Crea il pulsante di avvio
         self.start_button = QtWidgets.QPushButton("Avvia")
         self.start_button.clicked.connect(self.start_processing)
-        self.start_button.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF")
+        self.start_button.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
 
         # Crea il layout
         self.layout = QtWidgets.QVBoxLayout()
@@ -66,9 +78,17 @@ class MainWindow(QtWidgets.QMainWindow):
         self.file_layout.addWidget(self.file_selector)
         self.file_layout.addWidget(self.file_path_display)
 
-        self.layout.addLayout(self.file_layout)
+        # Crea un layout orizzontale per il selettore di risoluzione e la casella di controllo
+        self.res_layout = QtWidgets.QHBoxLayout()
+        self.res_layout.addWidget(self.combo)
+        self.res_layout.addWidget(self.font_checkbox)
 
+        # Aggiungi i layout al layout principale
+        self.layout.addLayout(self.file_layout)
+        self.layout.addLayout(self.res_layout)
+        
         self.layout.addWidget(self.terminal_output)
+        
         self.layout.addWidget(self.start_button)
 
         self.widget = QtWidgets.QWidget()
@@ -78,6 +98,32 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Ridimensiona la finestra a 720x480 pixel
         self.resize(600, 360)
+
+        
+    def source_res(self, text):
+        if text == "Crunchy":
+            fs_factor = '3.27'
+            bord_factor = '1.77'
+            offset_factor = '17.7'
+            vertical_factor = '3'
+            signs_factor = '3.01'
+            pass
+        elif text == "360p":
+            pass
+        elif text == "480p":
+            # Imposta le variabili per 480p
+            pass
+        elif text == "720p":
+            # Imposta le variabili per 720p
+            pass
+        
+    def switch_font(self, state):
+        if state == QtCore.Qt.CheckState.Checked:
+            # Fai qualcosa quando la casella di controllo è selezionata
+            pass
+        else:
+            # Fai qualcosa quando la casella di controllo non è selezionata
+            pass
 
     def select_file(self):
         file_dialog = QtWidgets.QFileDialog()
@@ -120,13 +166,13 @@ class MainWindow(QtWidgets.QMainWindow):
             elif line.startswith("Style:"):
                 parts = line.split(",")
                 if len(parts) > 3 and parts[0] == "Default" or "Default Top" or "Italics" or "Italics Top" or "Narrator" or "Narrator Top" or "Overlap" or "Internat" or "Internal Top" or "Flashback" or "Flashback Internal" or "Flashback - Top" or "Flashback - Inception" :
-                    parts[2] = str(int(round(float(parts[2]) * 3.27)))
-                    parts[16] = str(int(round(float(parts[16]) * 1.77)))
-                    parts[19] = str(int(int(parts[19]) * 17.7))
-                    parts[20] = str(int(int(parts[20]) * 17.7))
-                    parts[21] = str(int(int(parts[21]) * 3))
+                    parts[2] = str(int(round(float(parts[2]) * 3.27))) #fs
+                    parts[16] = str(int(round(float(parts[16]) * 1.77))) #bord
+                    parts[19] = str(int(int(parts[19]) * 17.7)) #offset sx
+                    parts[20] = str(int(int(parts[20]) * 17.7)) #offset dx
+                    parts[21] = str(int(int(parts[21]) * 3)) #offset vert
                 else:
-                    parts[2] = str(int(round(float(parts[2]) * 3.27)))
+                    parts[2] = str(int(round(float(parts[2]) * 3.27))) #generic_fs
                     parts[16] = str(int(round(float(parts[16]) * 3.27)))
                     parts[19] = str(int(round(float(parts[19]) * 3.27)))
                     parts[20] = str(int(round(float(parts[20]) * 3.27)))
@@ -135,7 +181,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 new_lines.append(new_line)       
             elif line.startswith("Dialogue:"):
                 new_line = re.sub(r'\\fs([\d]+)', lambda x: f"\\fs{str(int(round(float(x.group(1)) * 3.27)))}", line)
-                new_line = re.sub(r'\\pos\(([\d.]+),([\d.]+)\)', lambda x: f"\\pos({str(round(float(x.group(1)) * 3.01, 2))},{str(round(float(x.group(2)) * 3.01, 2))})", new_line)
+                new_line = re.sub(r'\\pos\(([\d.]+),([\d.]+)\)', lambda x: f"\\pos({str(round(float(x.group(1)) * 3.01, 2))},{str(round(float(x.group(2)) * 3.01, 2))})", new_line) #generic_signs
                 parts = line.split(",")
                 if line.startswith("Dialogue:") and "Top" in parts[3] or " Top" in parts[3]:
                     parts[3] = parts[3].replace("Top", "").replace(" Top", "")
