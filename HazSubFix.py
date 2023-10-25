@@ -46,7 +46,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Crea il box per mostrare il percorso del file selezionato
         self.file_path_display = QtWidgets.QLineEdit()
-        self.file_path_display.setFixedSize(460, 25)
+        self.file_path_display.setFixedSize(430, 25)
         self.file_path_display.setReadOnly(False)
         self.file_path_display.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
 
@@ -55,19 +55,23 @@ class MainWindow(QtWidgets.QMainWindow):
         self.combo.setFixedSize(140, 25)
         self.combo.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
         self.combo.addItems(["Crunchy", "360p", "480p", "720p"])
+        self.source_res(self.combo.currentText())
         self.combo.currentTextChanged.connect(self.source_res)
 
         # Crea la casella di controllo "usa Gandhi Sansi"
         self.font_checkbox = QtWidgets.QCheckBox("usa Gandhi Sans")
+        self.switch_font(self.font_checkbox.checkState())
         self.font_checkbox.stateChanged.connect(self.switch_font)
 
         # Crea il box per l'output del terminale
         self.terminal_output = QtWidgets.QTextEdit()
+        self.terminal_output.setFixedSize(580, 220)
         self.terminal_output.setReadOnly(True)
         self.terminal_output.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
 
         # Crea il pulsante di avvio
         self.start_button = QtWidgets.QPushButton("Avvia")
+        self.start_button.setFixedSize(580, 25)
         self.start_button.clicked.connect(self.start_processing)
         self.start_button.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
 
@@ -87,30 +91,32 @@ class MainWindow(QtWidgets.QMainWindow):
         # Aggiungi i layout al layout principale
         self.layout.addLayout(self.file_layout)
         self.layout.addLayout(self.res_layout)
-        
         self.layout.addWidget(self.terminal_output)
-        
         self.layout.addWidget(self.start_button)
-
+        
         self.widget = QtWidgets.QWidget()
         self.widget.setLayout(self.layout)
-
         self.setCentralWidget(self.widget)
 
-        # Ridimensiona la finestra a 720x480 pixel
-        self.resize(600, 360)
+        # Ridimensiona la finestra a 600x360 pixel
+        self.setFixedSize(600, 360)
 
         
     def source_res(self, text):
         if text == "Crunchy":
-            fs_factor = '3.27'
-            bord_factor = '1.77'
-            offset_factor = '17.7'
-            vertical_factor = '3'
-            signs_factor = '3.01'
-            pass
+            os.environ['fs_factor'] = '3.27'
+            os.environ['bord_factor'] = '1.77'
+            os.environ['offset_factor'] = '17.7'
+            os.environ['vertical_factor'] = '3'
+            os.environ['signs_factor'] = '3.01'
+
         elif text == "360p":
-            pass
+            os.environ['fs_factor'] = '3.27'
+            os.environ['bord_factor'] = '3.27'
+            os.environ['offset_factor'] = '3.27'
+            os.environ['vertical_factor'] = '3'
+            os.environ['signs_factor'] = '3.01'
+
         elif text == "480p":
             # Imposta le variabili per 480p
             pass
@@ -120,11 +126,10 @@ class MainWindow(QtWidgets.QMainWindow):
         
     def switch_font(self, state):
         if state == QtCore.Qt.CheckState.Checked:
-            # Fai qualcosa quando la casella di controllo è selezionata
-            pass
+            os.environ['ghandisans'] = '1'
         else:
-            # Fai qualcosa quando la casella di controllo non è selezionata
-            pass
+            os.environ['ghandisans'] = '0'
+
 
     def select_file(self):
         file_dialog = QtWidgets.QFileDialog()
@@ -166,23 +171,29 @@ class MainWindow(QtWidgets.QMainWindow):
                     new_lines.append("PlayResY: 1080\n")
             elif line.startswith("Style:"):
                 parts = line.split(",")
-                if len(parts) > 3 and parts[0] == "Default" or "Default Top" or "Italics" or "Italics Top" or "Narrator" or "Narrator Top" or "Overlap" or "Internat" or "Internal Top" or "Flashback" or "Flashback Internal" or "Flashback - Top" or "Flashback - Inception" :
-                    parts[2] = str(int(round(float(parts[2]) * 3.27))) #fs
-                    parts[16] = str(int(round(float(parts[16]) * 1.77))) #bord
-                    parts[19] = str(int(int(parts[19]) * 17.7)) #offset sx
-                    parts[20] = str(int(int(parts[20]) * 17.7)) #offset dx
-                    parts[21] = str(int(int(parts[21]) * 3)) #offset vert
+                if len(parts) > 3 and parts[0] == "Default" or "Default Top" or "Italics" or "Italics Top" or "Narrator" or "Narrator Top" or "Overlap" or "Internal" or "Internal Top" or "Flashback" or "Flashback Internal" or "Flashback - Top" or "Flashback - Inception" :
+                    parts[2] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #fs
+                    parts[16] = str(int(round(float(parts[16]) * float(os.environ['bord_factor'])))) #bord
+                    parts[19] = str(int(int(parts[19]) * float(os.environ['offset_factor']))) #offset sx
+                    parts[20] = str(int(int(parts[20]) * float(os.environ['offset_factor']))) #offset dx
+                    parts[21] = str(int(int(parts[21]) * float(os.environ['vertical_factor']))) #offset vert
+                    if os.environ.get('ghandisans', '0') == '1':
+                        parts[1] = parts[1].replace("Trebuchet MS").replace("Gandhi Sans")
+                        parts[8] = parts[8].replace("1")
                 else:
-                    parts[2] = str(int(round(float(parts[2]) * 3.27))) #generic_fs
-                    parts[16] = str(int(round(float(parts[16]) * 3.27)))
-                    parts[19] = str(int(round(float(parts[19]) * 3.27)))
-                    parts[20] = str(int(round(float(parts[20]) * 3.27)))
+                    parts[2] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #generic_fs
+                    parts[16] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
+                    parts[19] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
+                    parts[20] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
                     parts[21] = str(int(int(parts[21]) * 3))
+                    if os.environ.get('ghandisans', '0') == '1':
+                        parts[1] = parts[1].replace("Trebuchet MS").replace("Gandhi Sans")
+                        parts[8] = parts[8].replace("1")
                 new_line = ",".join(parts)
                 new_lines.append(new_line)       
             elif line.startswith("Dialogue:"):
-                new_line = re.sub(r'\\fs([\d]+)', lambda x: f"\\fs{str(int(round(float(x.group(1)) * 3.27)))}", line)
-                new_line = re.sub(r'\\pos\(([\d.]+),([\d.]+)\)', lambda x: f"\\pos({str(round(float(x.group(1)) * 3.01, 2))},{str(round(float(x.group(2)) * 3.01, 2))})", new_line) #generic_signs
+                new_line = re.sub(r'\\fs([\d]+)', lambda x: f"\\fs{str(int(round(float(x.group(1))) * float(os.environ['fs_factor'])))}", line)
+                new_line = re.sub(r'\\pos\(([\d.]+),([\d.]+)\)', lambda x: f"\\pos({str(round(float(x.group(1)) * float(os.environ['signs_factor']), 2))},{str(round(float(x.group(2)) * float(os.environ['signs_factor']), 2))}", new_line) #generic_signs
                 parts = line.split(",")
                 if line.startswith("Dialogue:") and "Top" in parts[3] or " Top" in parts[3]:
                     parts[3] = parts[3].replace("Top", "").replace(" Top", "")
@@ -196,10 +207,7 @@ class MainWindow(QtWidgets.QMainWindow):
             else:
                 new_lines.append(line)
 
-                
-
             # Scrivi le nuove righe nel file di output
-
             output_filename = os.path.join(output_folder, os.path.basename(ass_filepath))
             with codecs.open(output_filename, 'w', encoding='utf-8-sig') as f:
                 f.writelines(new_lines)
