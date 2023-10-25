@@ -58,7 +58,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.combo.currentTextChanged.connect(self.source_res)
 
         # Crea la casella di controllo "usa Gandhi Sansi"
-        self.font_checkbox = QtWidgets.QCheckBox("usa Gandhi Sansi")
+        self.font_checkbox = QtWidgets.QCheckBox("usa Gandhi Sans")
         self.font_checkbox.stateChanged.connect(self.switch_font)
 
         # Crea il box per l'output del terminale
