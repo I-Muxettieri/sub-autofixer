@@ -52,6 +52,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Crea il selettore per la risoluzione di partenza
         self.combo = QtWidgets.QComboBox()
+        self.combo.setFixedSize(140, 25)
         self.combo.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
         self.combo.addItems(["Crunchy", "360p", "480p", "720p"])
         self.combo.currentTextChanged.connect(self.source_res)
