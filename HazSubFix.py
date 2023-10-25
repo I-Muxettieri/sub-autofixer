@@ -36,7 +36,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Inizializza file_path come stringa vuota
         self.file_path = ""
 
-        self.setWindowTitle("GUI per gestire le operazioni di input")
+        self.setWindowTitle("Crunchyroll ASS normalizer")
 
         # Crea il box per la selezione dei file
         self.file_selector = QtWidgets.QPushButton("Seleziona file o cartella")
