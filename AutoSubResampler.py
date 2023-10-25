@@ -188,8 +188,8 @@ class MainWindow(QtWidgets.QMainWindow):
                     parts[20] = str(int(int(parts[20]) * float(os.environ['offset_factor']))) #offset dx
                     parts[21] = str(int(int(parts[21]) * float(os.environ['vertical_factor']))) #offset vert
                     if os.environ.get('ghandisans', '0') == '1':
-                        parts[1] = parts[1].replace("Trebuchet MS").replace("Gandhi Sans")
-                        parts[8] = parts[8].replace("1")
+                        parts[1] = parts[1].replace("Trebuchet MS", "Gandhi Sans")
+                        parts[8] = "1"
                 else:
                     parts[2] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #generic_fs
                     parts[16] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
@@ -197,8 +197,8 @@ class MainWindow(QtWidgets.QMainWindow):
                     parts[20] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
                     parts[21] = str(int(int(parts[21]) * 3))
                     if os.environ.get('ghandisans', '0') == '1':
-                        parts[1] = parts[1].replace("Trebuchet MS").replace("Gandhi Sans")
-                        parts[8] = parts[8].replace("1")
+                        parts[1] = parts[1].replace("Trebuchet MS", "Gandhi Sans")
+                        parts[8] = "1"
                 new_line = ",".join(parts)
                 new_lines.append(new_line)       
             elif line.startswith("Dialogue:"):
