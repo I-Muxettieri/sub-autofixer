@@ -3,7 +3,6 @@ import sys
 import os
 import re
 import codecs
-import subprocess
 
 def set_dark_theme(app):
     palette = QtGui.QPalette()
@@ -21,12 +20,9 @@ def set_dark_theme(app):
     palette.setColor(QtGui.QPalette.ColorRole.BrightText,
                      QtCore.Qt.GlobalColor.red)
     palette.setColor(QtGui.QPalette.ColorRole.Highlight,
-                     QtGui.QColor(42,
-                                  130,
-                                  218))
+                     QtGui.QColor(42, 130, 218))
     palette.setColor(QtGui.QPalette.ColorRole.HighlightedText,
                      QtCore.Qt.GlobalColor.white)
-
     app.setPalette(palette)
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -35,7 +31,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Inizializza file_path come stringa vuota
         self.file_path = ""
-
         self.setWindowTitle("Crunchyroll ASS normalizer")
 
         # Crea il box per la selezione dei file
@@ -61,9 +56,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.source_res(self.combo.currentText())
         self.combo.currentTextChanged.connect(self.source_res)
 
-        # Crea la casella di controllo "usa Gandhi Sansi"
+        # Crea la casella di controllo "usa Gandhi Sans"
         self.font_checkbox = QtWidgets.QCheckBox("usa Gandhi Sans")
-        self.switch_font(self.font_checkbox.checkState())
+        self.font_checkbox.setChecked(False)  # Imposta lo stato iniziale come selezionato
+        self.switch_font(self.font_checkbox.isChecked())  # Ottieni lo stato iniziale direttamente
         self.font_checkbox.stateChanged.connect(self.switch_font)
 
         # Crea il box per l'output del terminale
@@ -133,20 +129,17 @@ class MainWindow(QtWidgets.QMainWindow):
             os.environ['offset_factor'] = '1.50'
             os.environ['vertical_factor'] = '1'
             os.environ['signs_factor'] = '1.50'
-        
-    def switch_font(self, state):
-        if state == QtCore.Qt.CheckState.Checked:
-            os.environ['ghandisans'] = '1'
-        else:
-            os.environ['ghandisans'] = '0'
-
-
+    
     def select_file(self):
         file_dialog = QtWidgets.QFileDialog()
         self.file_path = file_dialog.getOpenFileName()[0]  # Usa self.file_path invece di file_path
-
-        # Mostra il percorso del file nel box di testo
         self.file_path_display.setText(self.file_path)
+        
+    def switch_font(self, state):
+        if state == QtCore.Qt.CheckState.Checked:
+            os.environ['gandhisans'] = '1'
+        else:
+            os.environ['gandhisans'] = '0'
 
     def start_processing(self):
         if os.path.isdir(self.file_path):
@@ -178,29 +171,24 @@ class MainWindow(QtWidgets.QMainWindow):
                 if "PlayResX:" in line:
                     new_lines.append("PlayResX: 1920\n")
                 if "PlayResY:" in line:
-                    new_lines.append("PlayResY: 1080\n")
+                    new_lines.append("PlayResY: 1080\n")       
             elif line.startswith("Style:"):
                 parts = line.split(",")
-                if len(parts) > 3 and parts[0] == "Default" or "Default Top" or "Italics" or "Italics Top" or "Narrator" or "Narrator Top" or "Overlap" or "Internal" or "Internal Top" or "Flashback" or "Flashback Internal" or "Flashback - Top" or "Flashback - Inception" :
+                if parts[0] in ["Default", "Default Top", "Italics", "Italics Top", "Narrator", "Narrator Top", "Overlap", "Internal", "Internal Top", "Flashback", "Flashback Internal", "Flashback - Top", "Flashback - Inception"]:
                     parts[2] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #fs
                     parts[16] = str(int(round(float(parts[16]) * float(os.environ['bord_factor'])))) #bord
                     parts[19] = str(int(int(parts[19]) * float(os.environ['offset_factor']))) #offset sx
                     parts[20] = str(int(int(parts[20]) * float(os.environ['offset_factor']))) #offset dx
                     parts[21] = str(int(int(parts[21]) * float(os.environ['vertical_factor']))) #offset vert
-                    if os.environ.get('ghandisans', '0') == '1':
-                        parts[1] = parts[1].replace("Trebuchet MS", "Gandhi Sans")
-                        parts[8] = "1"
                 else:
                     parts[2] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #generic_fs
                     parts[16] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
                     parts[19] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
                     parts[20] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
-                    parts[21] = str(int(int(parts[21]) * 3))
-                    if os.environ.get('ghandisans', '0') == '1':
-                        parts[1] = parts[1].replace("Trebuchet MS", "Gandhi Sans")
-                        parts[8] = "1"
+                    parts[21] = str(int(int(parts[21]) * 3))     
                 new_line = ",".join(parts)
-                new_lines.append(new_line)       
+                new_lines.append(new_line)
+                       
             elif line.startswith("Dialogue:"):
                 new_line = re.sub(r'\\fs([\d]+)', lambda x: f"\\fs{str(int(round(float(x.group(1))) * float(os.environ['fs_factor'])))}", line)
                 new_line = re.sub(r'\\pos\(([\d.]+),([\d.]+)\)', lambda x: f"\\pos({str(round(float(x.group(1)) * float(os.environ['signs_factor']), 2))},{str(round(float(x.group(2)) * float(os.environ['signs_factor']), 2))}", new_line) #generic_signs
@@ -213,14 +201,23 @@ class MainWindow(QtWidgets.QMainWindow):
                     parts[3] = parts[3].replace("Italics", "Default")
                     parts[9] = "{\\i1}" + parts[9]
                     new_line = ",".join(parts)
-                new_lines.append(new_line)
+                new_lines.append(new_line)   
             else:
                 new_lines.append(line)
+                
+        # Applica le condizioni alle stringhe in new_lines
+        for index, new_line in enumerate(new_lines):
+            if new_line.startswith("Style:"):
+                parts = new_line.split(",")
+                if self.font_checkbox.isChecked():
+                    parts[1] = parts[1].replace("Trebuchet MS", "Gandhi Sans")
+                    parts[8] = parts[8].replace("0", "1")
+                new_lines[index] = ",".join(parts)
 
-            # Scrivi le nuove righe nel file di output
-            output_filename = os.path.join(output_folder, os.path.basename(ass_filepath))
-            with codecs.open(output_filename, 'w', encoding='utf-8-sig') as f:
-                f.writelines(new_lines)
+        # Scrivi le nuove righe nel file di output
+        output_filename = os.path.join(output_folder, os.path.basename(ass_filepath))
+        with codecs.open(output_filename, 'w', encoding='utf-8-sig') as f:
+            f.writelines(new_lines)
 
 app = QtWidgets.QApplication(sys.argv)
 set_dark_theme(app) # Applica il tema scuro

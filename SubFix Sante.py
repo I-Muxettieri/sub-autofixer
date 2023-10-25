@@ -23,7 +23,7 @@ def ass_mod(output_folder, ass_filepath):
             if len(parts) > 3:
                 # Cambiamo il font a "Gandhi Sans Bold"
                 parts[1] = "Gandhi Sans Bold"
-            if len(parts) > 3 and parts[0] == "Default" or "Default Top" or "Italics" or "Italics Top" or "Narrator" or "Narrator Top" or "Overlap" or "Internat" or "Internal Top" or "Flashback" or "Flashback Internal" or "Flashback - Top" or "Flashback - Inception" :
+            if len(parts) > 3 and parts[0] == "Default" or "Default Top" or "Italics" or "Italics Top" or "Narrator" or "Narrator Top" or "Overlap" or "Internal" or "Internal Top" or "Flashback" or "Flashback Internal" or "Flashback - Top" or "Flashback - Inception" :
                 parts[2] = str(int(round(float(parts[2]) * 3.27)))
                 parts[16] = str(int(round(float(parts[16]) * 1.77)))
                 parts[19] = str(int(int(parts[19]) * 17.7))
