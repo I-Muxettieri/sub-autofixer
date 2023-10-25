@@ -17,12 +17,9 @@ def set_dark_theme(app):
     palette.setColor(QtGui.QPalette.ColorRole.Shadow, QtGui.QColor(20, 20, 20))
     palette.setColor(QtGui.QPalette.ColorRole.Button, QtGui.QColor(53, 53, 53))
     palette.setColor(QtGui.QPalette.ColorRole.ButtonText, QtCore.Qt.GlobalColor.white)
-    palette.setColor(QtGui.QPalette.ColorRole.BrightText,
-                     QtCore.Qt.GlobalColor.red)
-    palette.setColor(QtGui.QPalette.ColorRole.Highlight,
-                     QtGui.QColor(42, 130, 218))
-    palette.setColor(QtGui.QPalette.ColorRole.HighlightedText,
-                     QtCore.Qt.GlobalColor.white)
+    palette.setColor(QtGui.QPalette.ColorRole.BrightText, QtCore.Qt.GlobalColor.red)
+    palette.setColor(QtGui.QPalette.ColorRole.Highlight, QtGui.QColor(42, 130, 218))
+    palette.setColor(QtGui.QPalette.ColorRole.HighlightedText, QtCore.Qt.GlobalColor.white)
     app.setPalette(palette)
 
 class MainWindow(QtWidgets.QMainWindow):
