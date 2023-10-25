@@ -42,12 +42,15 @@ class MainWindow(QtWidgets.QMainWindow):
         self.file_selector = QtWidgets.QPushButton("Seleziona file o cartella")
         self.file_selector.setFixedSize(140, 25)
         self.file_selector.clicked.connect(self.select_file)
-        self.file_selector.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF")
+        self.file_selector.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
 
         # Crea il box per mostrare il percorso del file selezionato
-        self.file_path_display = QtWidgets.QLineEdit()
+        self.file_path_display = QtWidgets.QTextEdit()
         self.file_path_display.setFixedSize(430, 25)
         self.file_path_display.setReadOnly(False)
+        self.file_path_display.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.file_path_display.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.file_path_display.setLineWrapMode(QtWidgets.QTextEdit.LineWrapMode.NoWrap)
         self.file_path_display.setStyleSheet("background-color: #2A2A2A; color: #FFFFFF; border: 1px solid #404040")
 
         # Crea il selettore per la risoluzione di partenza
