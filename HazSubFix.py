@@ -114,18 +114,25 @@ class MainWindow(QtWidgets.QMainWindow):
             os.environ['signs_factor'] = '3.01'
 
         elif text == "360p":
-            os.environ['fs_factor'] = '3.27'
-            os.environ['bord_factor'] = '3.27'
-            os.environ['offset_factor'] = '3.27'
-            os.environ['vertical_factor'] = '3'
-            os.environ['signs_factor'] = '3.01'
+            os.environ['fs_factor'] = '3.00'
+            os.environ['bord_factor'] = '3.00'
+            os.environ['offset_factor'] = '3.00'
+            os.environ['vertical_factor'] = '1'
+            os.environ['signs_factor'] = '3.00'
 
         elif text == "480p":
-            # Imposta le variabili per 480p
-            pass
+            os.environ['fs_factor'] = '2.25'
+            os.environ['bord_factor'] = '2.25'
+            os.environ['offset_factor'] = '2.25'
+            os.environ['vertical_factor'] = '1'
+            os.environ['signs_factor'] = '2.25'
+            
         elif text == "720p":
-            # Imposta le variabili per 720p
-            pass
+            os.environ['fs_factor'] = '1.50'
+            os.environ['bord_factor'] = '1.50'
+            os.environ['offset_factor'] = '1.50'
+            os.environ['vertical_factor'] = '1'
+            os.environ['signs_factor'] = '1.50'
         
     def switch_font(self, state):
         if state == QtCore.Qt.CheckState.Checked:
