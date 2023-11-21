@@ -101,10 +101,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def source_res(self, text):
         if text == "Crunchy":
             os.environ['fs_factor'] = '3.27'
-            os.environ['bord_factor'] = '1.77'
-            os.environ['offset_factor'] = '17.7'
+            os.environ['bord_factor'] = '2.27'
+            os.environ['offset_factor'] = '3.27'
             os.environ['vertical_factor'] = '3'
-            os.environ['signs_factor'] = '3.01'
+            os.environ['signs_factor'] = '3.00'
 
         elif text == "360p":
             os.environ['fs_factor'] = '3.00'
@@ -171,7 +171,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     new_lines.append("PlayResY: 1080\n")       
             elif line.startswith("Style:"):
                 parts = line.split(",")
-                if parts[0] in ["Default", "Default Top", "Italics", "Italics Top", "Narrator", "Narrator Top", "Overlap", "Internal", "Internal Top", "Flashback", "Flashback Internal", "Flashback - Top", "Flashback - Inception"]:
+                if any(keyword in parts[0] for keyword in ["Default", "Main", "Default Top", "Italics", "Italics Top", "Narrator", "Narrator Top", "Overlap", "Internal", "Internal Top", "Flashback", "Flashback Internal", "Flashback - Top", "Flashback - Inception"]):
                     parts[2] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #fs
                     parts[16] = str(int(round(float(parts[16]) * float(os.environ['bord_factor'])))) #bord
                     parts[19] = str(int(int(parts[19]) * float(os.environ['offset_factor']))) #offset sx
@@ -179,7 +179,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     parts[21] = str(int(int(parts[21]) * float(os.environ['vertical_factor']))) #offset vert
                 else:
                     parts[2] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #generic_fs
-                    parts[16] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
+                    parts[16] = str(int(round(float(parts[2]) * float(os.environ['fs_factor'])))) #bord
                     parts[19] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
                     parts[20] = str(int(round(float(parts[2]) * float(os.environ['fs_factor']))))
                     parts[21] = str(int(int(parts[21]) * 3))     
@@ -195,7 +195,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     parts[9] = "{\\an8}" + parts[9]
                     new_line = ",".join(parts)
                 if line.startswith("Dialogue:") and "Italics" in parts[3]:
-                    parts[3] = parts[3].replace("Italics", "Default")
+                    parts[3] = parts[3].replace("Italics", "Main")
                     parts[9] = "{\\i1}" + parts[9]
                     new_line = ",".join(parts)
                 new_lines.append(new_line)   
@@ -208,7 +208,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 parts = new_line.split(",")
                 if self.font_checkbox.isChecked():
                     parts[1] = parts[1].replace("Trebuchet MS", "Gandhi Sans")
-                    parts[8] = parts[8].replace("0", "1")
+                    parts[7] = parts[7].replace("0", "-1")
                 new_lines[index] = ",".join(parts)
 
         # Scrivi le nuove righe nel file di output
