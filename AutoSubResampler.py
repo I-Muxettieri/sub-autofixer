@@ -100,7 +100,7 @@ class MainWindow(QtWidgets.QMainWindow):
         
     def source_res(self, text):
         if text == "Crunchy":
-            os.environ['fs_factor'] = '3.27'
+            os.environ['fs_factor'] = '3.00'
             os.environ['bord_factor'] = '2.27'
             os.environ['offset_factor'] = '3.27'
             os.environ['vertical_factor'] = '3'
