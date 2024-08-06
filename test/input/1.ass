@@ -20,9 +20,9 @@ Dialogue: 0,0:00:39.06,0:00:40.56,Default,,0,0,0,,Tsukune...
 Dialogue: 0,0:00:41.31,0:00:42.60,Default,,0,0,0,,Moka?
 Dialogue: 0,0:00:43.00,0:00:44.74,Default,,0,0,0,,Vuoi di nuovo il mio sangue?
 Dialogue: 0,0:00:45.44,0:00:47.65,Default,,0,0,0,,No, oggi no.
-Dialogue: 0,0:00:47.65,0:00:50.11,Default,,0,0,0,,Non pensavo a quello...
+Dialogue: 0,0:00:47.65,0:00:50.11,Default,,0,0,0,,{\pos(13,13)}Non pensavo a quello...
 Dialogue: 0,0:00:50.11,0:00:50.78,Default,,0,0,0,,Tsukune!
-Dialogue: 0,0:00:54.78,0:00:57.57,Default,,0,0,0,,N-Ne sei sicura, Moka?
+Dialogue: 0,0:00:54.78,0:00:57.57,Default,,0,0,0,,{\move(13,13,123,213,213,123)}N-Ne sei sicura, Moka?
 Dialogue: 0,0:00:57.57,0:00:59.08,Default,,0,0,0,,Sì.
 Dialogue: 0,0:00:59.08,0:01:01.65,Default,,0,0,0,,Se è con te, sì.
 Dialogue: 0,0:01:12.63,0:01:15.60,Default,,0,0,0,,E così vorresti baciarmi?
