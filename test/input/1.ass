@@ -9,13 +9,14 @@ ScriptType: v4.00+
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+Style: Italic,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,2,2,10,10,10,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,0:00:31.46,0:00:33.05,Default,,0,0,0,,{\fs50\fscx110}Ehi, Tsukune.
 Dialogue: 0,0:00:33.05,0:00:34.34,Default,,0,0,0,,Moka?
 Dialogue: 0,0:00:34.34,0:00:36.42,Default,,0,0,0,,Tsukune...
-Dialogue: 0,0:00:37.05,0:00:38.31,Default,,0,0,0,,Moka.
+Dialogue: 0,0:00:37.05,0:00:38.31,Italic,,0,0,0,,Moka.
 Dialogue: 0,0:00:39.06,0:00:40.56,Default,,0,0,0,,Tsukune...
 Dialogue: 0,0:00:41.31,0:00:42.60,Default,,0,0,0,,Moka?
 Dialogue: 0,0:00:43.00,0:00:44.74,Default,,0,0,0,,Vuoi di nuovo il mio sangue?

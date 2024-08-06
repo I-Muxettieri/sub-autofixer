@@ -15,15 +15,16 @@ Video AR Value: 1.777778
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Default,Arial,75,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,133.333,100,0,0,1,7.5,7.5,2,50,50,38,1
-Style: [Mux] Dialoghi,Gandhi Sans,74,&HFF00FFFF,&HFF000000,&H00000000,&H00A00000,-1,-1,-1,-1,100,100,0,0,1,4,1.5,2,225,225,55,1
-Style: [Mux] Overlap,Gandhi Sans,74,&HFF00FFFF,&HFF000000,&H1500743E,&H00A00000,-1,-1,-1,-1,100,100,0,0,1,4,1.5,2,225,225,55,1
+Style: Italic,Arial,75,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,133.333,100,0,0,1,7.5,7.5,2,50,50,38,1
+Style: [Mux] Dialoghi,Gandhi Sans,74,&HFF00FFFF,&HFF000000,&H00000000,&H00A00000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
+Style: [Mux] Overlap,Gandhi Sans,74,&HFF00FFFF,&HFF000000,&H1500743E,&H00A00000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,0:00:31.46,0:00:33.05,[Mux] Dialoghi,,0,0,0,,{\fs187.5\fscx146.667}Ehi, Tsukune.
 Dialogue: 0,0:00:33.05,0:00:34.34,[Mux] Dialoghi,,0,0,0,,Moka?
 Dialogue: 0,0:00:34.34,0:00:36.42,[Mux] Dialoghi,,0,0,0,,Tsukune...
-Dialogue: 0,0:00:37.05,0:00:38.31,[Mux] Dialoghi,,0,0,0,,Moka.
+Dialogue: 0,0:00:37.05,0:00:38.31,[Mux] Dialoghi,,0,0,0,,{\i1}Moka.
 Dialogue: 0,0:00:39.06,0:00:40.56,[Mux] Dialoghi,,0,0,0,,Tsukune...
 Dialogue: 0,0:00:41.31,0:00:42.60,[Mux] Dialoghi,,0,0,0,,Moka?
 Dialogue: 0,0:00:43.00,0:00:44.74,[Mux] Dialoghi,,0,0,0,,Vuoi di nuovo il mio sangue?

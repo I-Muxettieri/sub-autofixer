@@ -35,10 +35,10 @@ def parse_style(style: str) -> Dict[str, SSAStyle]:
     parsed_style.secondarycolor = parse_color(parts[4])
     parsed_style.outlinecolor = parse_color(parts[5])
     parsed_style.backcolor = parse_color(parts[6])
-    parsed_style.bold = bool(parts[7])
-    parsed_style.italic = bool(parts[8])
-    parsed_style.underline = bool(parts[9])
-    parsed_style.strikeout = bool(parts[10])
+    parsed_style.bold = parts[7] != "0"
+    parsed_style.italic = parts[8] != "0"
+    parsed_style.underline = parts[9] != "0"
+    parsed_style.strikeout = parts[10] != "0"
     parsed_style.scalex = float(parts[11])
     parsed_style.scaley = float(parts[12])
     parsed_style.spacing = float(parts[13])
