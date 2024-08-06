@@ -60,3 +60,20 @@ def parse_style(style: str) -> Dict[str, SSAStyle]:
     parsed_style.encoding = int(parts[22])
 
     return {parts[0]: parsed_style}
+
+
+def slipt_stags(text: str) -> tuple[str, str]:
+    start_tags = ""
+    tag_section = False
+    for i, char in enumerate(text):
+        if char == "{":
+            tag_section = True
+            start_tags += char
+        elif char == "}":
+            tag_section = False
+            start_tags += char
+        elif tag_section:
+            start_tags += char
+        elif not tag_section:
+            return (start_tags, text[i:].strip())
+    return ("", "")
