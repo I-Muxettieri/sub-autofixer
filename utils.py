@@ -11,12 +11,19 @@ def parse_color(color: str) -> Color:
     if parsed_color.endswith("H"):
         parsed_color = parsed_color[:1]
 
-    red = int(parsed_color[4:6], 16)
-    green = int(parsed_color[2:4], 16)
-    blue = int(parsed_color[:2], 16)
+    red = 0
+    green = 0
+    blue = 0
     alpha = 0
     if len(parsed_color) > 6:
-        alpha = int(parsed_color[6:8], 16)
+        alpha = int(parsed_color[:2], 16)
+        red = int(parsed_color[6:8], 16)
+        green = int(parsed_color[4:6], 16)
+        blue = int(parsed_color[2:4], 16)
+    else:
+        red = int(parsed_color[4:6], 16)
+        green = int(parsed_color[2:4], 16)
+        blue = int(parsed_color[:2], 16)
 
     return Color(red, green, blue, alpha)
 

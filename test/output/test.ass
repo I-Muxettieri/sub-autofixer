@@ -15,8 +15,8 @@ Video AR Value: 1.777778
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Default,Arial,75,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,133.333,100,0,0,1,7.5,7.5,2,50,50,38,1
-Style: [Mux] Dialoghi,Gandhi Sans,74,&HFF00FFFF,&HFF000000,&H00000000,&H00A00000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
-Style: [Mux] Overlap,Gandhi Sans,74,&HFF00FFFF,&HFF000000,&H1500743E,&H00A00000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
+Style: [Mux] Dialoghi,Gandhi Sans,74,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
+Style: [Mux] Overlap,Gandhi Sans,74,&H00FFFFFF,&H000000FF,&H00743E15,&HA0000000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text

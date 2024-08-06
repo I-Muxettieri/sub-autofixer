@@ -52,30 +52,27 @@ def restyle_dialogue(filename: str, output: str, restyling_styles: Dict[str, SSA
     for line in subs:
         if is_dialogue_line(line):
             line_style = subs.styles[line.style]
-            italic = ""
-            bold = ""
-            underline = ""
-            strikeout = ""
+            tags = []
+            if line_style.alignment != dialogue_style.alignment:
+                tags.append(f"\\an{line_style.alignment}")
             if line_style.italic and line_style.italic != dialogue_style.italic:
-                italic = f"\\i{int(line_style.italic)}"
+                tags.append(f"\\i{int(line_style.italic)}")
 
             if line_style.bold and line_style.bold != dialogue_style.bold:
-                bold = f"\\b{int(line_style.bold)}"
+                tags.append(f"\\b{int(line_style.bold)}")
             if (
                 line_style.underline
                 and line_style.underline != dialogue_style.underline
             ):
-                underline = f"\\u{int(line_style.underline)}"
+                tags.append(f"\\u{int(line_style.underline)}")
             if (
                 line_style.strikeout
                 and line_style.strikeout != dialogue_style.strikeout
             ):
-                strikeout = f"\\s{int(line_style.strikeout)}"
-
-            tags = "".join([italic, bold, underline, strikeout])
+                tags.append(f"\\s{int(line_style.strikeout)}")
 
             line.style = dialogue_style_name
-            line.text = ("{" + tags + "}" if len(tags) else "") + line.text
+            line.text = ("{" + "".join(tags) + "}" if len(tags) else "") + line.text
 
     subs.save(os.path.join(output, os.path.basename(filename)), format_="ass")
 
