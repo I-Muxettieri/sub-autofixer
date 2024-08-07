@@ -10,27 +10,50 @@ TYPESETTING_TAGS_REGEX = r"\\pos|\\move"
 OVERRIDE_TAGS_REGEX = r"{\\[^}]+}"
 
 
+def path_name_normalizer(path: str) -> str:
+    norm_path = ""
+    for char in path:
+        if char == "à":
+            norm_path += "a"
+        elif char == "è" or char == "é":
+            norm_path += "e"
+        elif char == "ò":
+            norm_path += "o"
+        elif char == "ù":
+            norm_path += "u"
+        else:
+            norm_path += char
+    return norm_path
+
+
 def is_valid_sub_file(filename: str) -> bool:
     return filename.endswith(".ass") or filename.endswith(".srt")
 
 
 def sub_converter(filename: str, output: str) -> str:
     name = os.path.splitext(os.path.basename(filename))
-    new_path = os.path.join(output, f"{name[0]}.ass")
+    new_path = path_name_normalizer(
+        os.path.normpath(os.path.join(output, f"{name[0]}.ass"))
+    )
     subs = load_sub(filename)
     subs.save(new_path, format_="ass")
-    return os.path.normpath(new_path)
+    return new_path
 
 
 def resample_script(sub: str, video: str, output: str):
     new_filename = os.path.join(output, os.path.splitext(os.path.basename(sub))[0])
-    aegi_resample = (
-        f'aegisub-cli --video "{video}" "{sub}" "{new_filename}.ass" "tool/resampleres"'
-    )
+    aegi_resample = [
+        "aegisub-cli",
+        "--video",
+        video,
+        sub,
+        f"{new_filename}.ass",
+        "tool/resampleres",
+    ]
 
     # archi_resample = f'aegisub-cli --loglevel 4 --video "{video}" "{new_filename}" "{new_filename}" "tool/resampleres"'
     res_result = subprocess.run(
-        aegi_resample, shell=True, check=True, capture_output=True, text=True
+        aegi_resample, check=True, capture_output=True, text=True
     )
     # subprocess.run(
     #     archi_resample, shell=True, check=True, capture_output=True, text=True
@@ -41,24 +64,36 @@ def resample_script(sub: str, video: str, output: str):
 
 
 def cleanup(sub: str):
-    aegi_resample = (
-        'aegisub-cli --selected-lines 0 --dialog "{\\"button\\": 0, \\"values\\": {\\"nostyle\\": true}}" '
-        + '--automation ua.ScriptCleanup.lua "'
-        + sub
-        + '" "'
-        + sub
-        + '" "Script Cleanup"'
-    )
+    script_cleanup = [
+        "aegisub-cli",
+        "--selected-lines",
+        "0",
+        "--dialog",
+        '{"button": 0, "values": {"nostyle": true}}',
+        "--automation",
+        "ua.ScriptCleanup.lua",
+        sub,
+        sub,
+        "Script Cleanup",
+    ]
 
-    result = subprocess.run(
-        aegi_resample, shell=True, check=True, capture_output=True, text=True
-    )
+    result = subprocess.run(script_cleanup, check=True, capture_output=True, text=True)
 
     print(result.stdout)
     print(result.stderr)
 
 
 def is_dialogue_event(event: SSAEvent) -> bool:
+    # if (
+    #     event.style == "Main"
+    #     or event.style == "Main_Italics"
+    #     or event.style == "Main_Top"
+    #     or event.style == "Main_Top_Italics"
+    #     or event.style == "Main_Overlap"
+    #     or event.style == "Flashback"
+    # ):
+    #     return True
+    # return False
     tags: List[str] = re.findall(OVERRIDE_TAGS_REGEX, event.text)
     for tag in tags:
         if re.search(TYPESETTING_TAGS_REGEX, tag):
@@ -221,7 +256,9 @@ def main():
     os.makedirs(output, exist_ok=True)
 
     restyling_styles = {}
-    with open("styles.txt", "r") as styles:
+    with open(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles.txt"), "r"
+    ) as styles:
         for style in styles:
             restyling_styles.update(parse_style(style.strip()))
 
