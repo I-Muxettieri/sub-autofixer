@@ -54,7 +54,7 @@ Dialogue: 90,0:01:57.80,0:02:00.64,[Mux] Dialoghi,,0,0,0,,E dai! Ci eravamo fina
 Dialogue: 90,0:02:02.64,0:02:05.64,[Mux] Dialoghi,,0,0,0,,{\i1}Mi chiamo Tsukune Aono, e ho 17 anni.{\i0}
 Dialogue: 90,0:02:05.64,0:02:07.98,[Mux] Dialoghi,,0,0,0,,{\i1}Da oggi farò il secondo liceo.{\i0}
 Dialogue: 90,0:02:06.45,0:02:07.68,[Mux] Overlap,,0,0,0,,Mondo degli umani
-Dialogue: 90,0:02:06.85,0:02:09.25,Error,,0,0,0,,Accademia Yokai
+Dialogue: 90,0:02:06.85,0:02:09.25,[Mux] Dialoghi,,0,0,0,Error,Accademia Yokai
 Dialogue: 90,0:02:07.98,0:02:12.18,[Mux] Dialoghi,,0,0,0,,{\i1}Le vacanze primaverili sono finite,
 Dialogue: 90,0:02:07.98,0:02:12.18,[Mux] Overlap,,0,0,0,,{\i1}e ora torno alla mia vita all'Accademia Yokai.{\i0}
 Dialogue: 90,0:02:13.23,0:02:14.36,[Mux] Dialoghi,,0,0,0,,Ragazzo.
@@ -246,7 +246,7 @@ Dialogue: 90,0:11:29.83,0:11:31.02,[Mux] Dialoghi,,0,0,0,,Ah, sì?
 Dialogue: 90,0:11:32.08,0:11:33.83,[Mux] Dialoghi,,0,0,0,,Beh, è una lunga storia...
 Dialogue: 90,0:11:33.83,0:11:36.80,[Mux] Dialoghi,,0,0,0,,Snack Yokai
 Dialogue: 90,0:11:34.25,0:11:36.04,[Mux] Overlap,,0,0,0,,Oh! Guarda qui!
-Dialogue: 90,0:11:34.25,0:11:37.84,Error,,0,0,0,,Dopo che mi avete aiutata, l'ultima volta,
+Dialogue: 90,0:11:34.25,0:11:37.84,[Mux] Dialoghi,,0,0,0,Error,Dopo che mi avete aiutata, l'ultima volta,
 Dialogue: 90,0:11:36.04,0:11:37.84,[Mux] Overlap,,0,0,0,,Sembrano buoni, vero?
 Dialogue: 90,0:11:37.84,0:11:39.40,[Mux] Dialoghi,,0,0,0,,Sì! Davvero!
 Dialogue: 90,0:11:37.84,0:11:40.63,[Mux] Overlap,,0,0,0,,ho girovagato qua e là in ogni dove,
@@ -474,17 +474,17 @@ Dialogue: 90,0:22:57.77,0:22:59.81,[Mux] Dialoghi,,0,0,0,,Aiutami, Tsukune!
 Dialogue: 90,0:22:59.81,0:23:00.73,[Mux] Dialoghi,,0,0,0,,Gnam!
 Dialogue: 90,0:23:00.73,0:23:05.12,[Mux] Dialoghi,,0,0,0,,Chuu!
 Dialogue: 90,0:23:01.85,0:23:03.36,[Mux] Overlap,,0,0,0,,Ma ti pare il momento?!
-Dialogue: 90,0:23:02.26,0:23:05.23,Error,,0,0,0,,Continua
+Dialogue: 90,0:23:02.26,0:23:05.23,[Mux] Dialoghi,,0,0,0,Error,Continua
 Dialogue: 90,0:23:03.36,0:23:05.23,[Mux] Overlap,,0,0,0,,E poi, aspetta! Proprio ora il "continua"?!
 Dialogue: 90,0:24:38.20,0:24:53.22,[Mux] Dialoghi,,0,0,0,,Prossimo episodio
 Dialogue: 90,0:24:38.20,0:24:53.22,[Mux] Overlap,,0,0,0,,Episodio 2\NLa sorella e il vampiro
-Dialogue: 90,0:24:39.33,0:24:40.37,Error,,0,0,0,,Aiutami, Tsukune!
-Dialogue: 90,0:24:40.37,0:24:41.70,Error,,0,0,0,,C'è una lettera spaventosa!
-Dialogue: 90,0:24:41.70,0:24:43.11,Error,,0,0,0,,Fa' vedere, Moka.
-Dialogue: 90,0:24:43.11,0:24:46.54,Error,,0,0,0,,Aspetta, ma dice che non hai pagato\N e che quindi ti toglieranno la corrente!
-Dialogue: 90,0:24:46.54,0:24:48.21,Error,,0,0,0,,Oddio... beh, allora,
-Dialogue: 90,0:24:48.21,0:24:49.11,Error,,0,0,0,,nel prossimo episodio:
-Dialogue: 90,0:24:49.11,0:24:50.46,Error,,0,0,0,,"La sorella e il vampiro".
-Dialogue: 90,0:24:50.46,0:24:52.79,Error,,0,0,0,,E tanti altri bei morsi per te!
+Dialogue: 90,0:24:39.33,0:24:40.37,[Mux] Dialoghi,,0,0,0,Error,Aiutami, Tsukune!
+Dialogue: 90,0:24:40.37,0:24:41.70,[Mux] Dialoghi,,0,0,0,Error,C'è una lettera spaventosa!
+Dialogue: 90,0:24:41.70,0:24:43.11,[Mux] Dialoghi,,0,0,0,Error,Fa' vedere, Moka.
+Dialogue: 90,0:24:43.11,0:24:46.54,[Mux] Dialoghi,,0,0,0,Error,Aspetta, ma dice che non hai pagato\N e che quindi ti toglieranno la corrente!
+Dialogue: 90,0:24:46.54,0:24:48.21,[Mux] Dialoghi,,0,0,0,Error,Oddio... beh, allora,
+Dialogue: 90,0:24:48.21,0:24:49.11,[Mux] Dialoghi,,0,0,0,Error,nel prossimo episodio:
+Dialogue: 90,0:24:49.11,0:24:50.46,[Mux] Dialoghi,,0,0,0,Error,"La sorella e il vampiro".
+Dialogue: 90,0:24:50.46,0:24:52.79,[Mux] Dialoghi,,0,0,0,Error,E tanti altri bei morsi per te!
 Dialogue: 0,0:00:47.65,0:00:50.11,Default,,0,0,0,,{\pos(65,48.75)}Non pensavo a quello...
 Dialogue: 0,0:00:54.78,0:00:57.57,Default,,0,0,0,,{\move(65,48.75,615,798.75,213,123)}N-Ne sei sicura, Moka?

@@ -15,13 +15,12 @@ Auto fix subtitles styles and resample using Advanced SubStation Alpha.
   Custom restyler, change the styles.txt with you own styles to restyle subs with them.\
   The first style is used to dialogue lines, the second for ovelaps.\
   (If there is a style like "ItalicTop" with an8 and i1 these 2 tags will be added inline if your style doesn't have them)\
-  It's possible to add more than two style, but they will only be added to the output file.
 
-  In addition, all events are sorted, keeping dialogue events at the top and typesetting events at the end of the file.
+  In addition, all lines are sorted, keeping dialogue lines at the top ordered by start time and typesetting lines at the end of the file.
 
 - ### overlapper
   Auto overlap lines using timing and alignment.\
-  If there are more than two lines for alignment, the style name is set to "Error" for manual correction.
+  If there are more than two lines for alignment, the effect field is set to "Overlap error" for manual correction.
 - ### dialogue layer correction
   All dialogue layers are setted to the provided value (Optional, default 90).
 - ### cleanup function

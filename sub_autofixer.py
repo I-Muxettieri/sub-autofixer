@@ -157,8 +157,8 @@ def restyler(subs: SSAFile, restyling_styles: Dict[str, SSAStyle], dialogue_laye
 
     # overlap lines
     if overlap_style_name:
-        current_overlap: list[Optional[SSAEvent]] = [None for i in range(9)]
-        last_dialog: list[Optional[SSAEvent]] = [None for i in range(9)]
+        current_overlap: list[Optional[SSAEvent]] = [None for _ in range(9)]
+        last_dialog: list[Optional[SSAEvent]] = [None for _ in range(9)]
 
         for event in dialogue_events:
             inline_an = get_inline_alignment(event.text)
@@ -172,9 +172,9 @@ def restyler(subs: SSAFile, restyling_styles: Dict[str, SSAStyle], dialogue_laye
                 event.style = overlap_style_name
                 current_overlap[event_an] = event
             else:
-                event.style = "Error"
+                event.effect = "Overlap error"
                 print(
-                    f'Error: there are more than 2 lines in overlap for an{event_an}, set line with "Error" style name'
+                    f'Error: there are more than 2 lines in overlap for an{event_an}, set line with "Overlap error" effect'
                 )
 
     subs.events = dialogue_events + type_events
