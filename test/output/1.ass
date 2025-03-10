@@ -4,26 +4,21 @@
 WrapStyle: 0
 ScaledBorderAndShadow: yes
 ScriptType: v4.00+
-PlayResX: 1920
-PlayResY: 1080
 
 [Aegisub Project Garbage]
-Video File: ../../../rosario-vampire/rosario-vampire-s1/Ep 01/Rosario to Vampire - S01E01 [BDRip 1920x1080 x264 FLAC] [Exp] [D5544DDD].mkv
-Video AR Mode: 4
-Video AR Value: 1.777778
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Arial,75,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,133.333,100,0,0,1,7.5,7.5,2,50,50,38,1
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
 Style: [Mux] Dialoghi,Gandhi Sans,74,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
 Style: [Mux] Overlap,Gandhi Sans,74,&H00FFFFFF,&H000000FF,&H00743E15,&HA0000000,-1,0,0,0,100,100,0,0,1,4,1.5,2,225,225,55,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 90,0:00:31.46,0:00:33.05,[Mux] Dialoghi,,0,0,0,,{\fs187.5\fscx146.667}Ehi, Tsukune.
+Dialogue: 90,0:00:31.46,0:00:33.05,[Mux] Dialoghi,,0,0,0,,{\fs50\fscx110}Ehi, Tsukune.
 Dialogue: 90,0:00:33.05,0:00:34.34,[Mux] Dialoghi,,0,0,0,,Moka?
-Dialogue: 90,0:00:34.34,0:00:36.42,[Mux] Dialoghi,,0,0,0,,Tsukune...
-Dialogue: 90,0:00:37.05,0:00:38.31,[Mux] Dialoghi,,0,0,0,,{\an8\i1}Moka.
+Dialogue: 90,0:00:34.34,0:00:36.42,[Mux] Dialoghi,,0,0,0,,T-T-Tsukune...
+Dialogue: 90,0:00:37.05,0:00:38.31,[Mux] Dialoghi,,0,0,0,,{\i1}{\an6}M-M-M-Moka.
 Dialogue: 90,0:00:39.06,0:00:40.56,[Mux] Dialoghi,,0,0,0,,Tsukune...
 Dialogue: 90,0:00:41.31,0:00:42.60,[Mux] Dialoghi,,0,0,0,,Moka?
 Dialogue: 90,0:00:43.00,0:00:44.74,[Mux] Dialoghi,,0,0,0,,Vuoi di nuovo il mio sangue?
@@ -54,7 +49,7 @@ Dialogue: 90,0:01:57.80,0:02:00.64,[Mux] Dialoghi,,0,0,0,,E dai! Ci eravamo fina
 Dialogue: 90,0:02:02.64,0:02:05.64,[Mux] Dialoghi,,0,0,0,,{\i1}Mi chiamo Tsukune Aono, e ho 17 anni.{\i0}
 Dialogue: 90,0:02:05.64,0:02:07.98,[Mux] Dialoghi,,0,0,0,,{\i1}Da oggi farò il secondo liceo.{\i0}
 Dialogue: 90,0:02:06.45,0:02:07.68,[Mux] Overlap,,0,0,0,,Mondo degli umani
-Dialogue: 90,0:02:06.85,0:02:09.25,[Mux] Dialoghi,,0,0,0,Error,Accademia Yokai
+Dialogue: 90,0:02:06.85,0:02:09.25,[Mux] Dialoghi,,0,0,0,Overlap error,Accademia Yokai
 Dialogue: 90,0:02:07.98,0:02:12.18,[Mux] Dialoghi,,0,0,0,,{\i1}Le vacanze primaverili sono finite,
 Dialogue: 90,0:02:07.98,0:02:12.18,[Mux] Overlap,,0,0,0,,{\i1}e ora torno alla mia vita all'Accademia Yokai.{\i0}
 Dialogue: 90,0:02:13.23,0:02:14.36,[Mux] Dialoghi,,0,0,0,,Ragazzo.
@@ -246,7 +241,7 @@ Dialogue: 90,0:11:29.83,0:11:31.02,[Mux] Dialoghi,,0,0,0,,Ah, sì?
 Dialogue: 90,0:11:32.08,0:11:33.83,[Mux] Dialoghi,,0,0,0,,Beh, è una lunga storia...
 Dialogue: 90,0:11:33.83,0:11:36.80,[Mux] Dialoghi,,0,0,0,,Snack Yokai
 Dialogue: 90,0:11:34.25,0:11:36.04,[Mux] Overlap,,0,0,0,,Oh! Guarda qui!
-Dialogue: 90,0:11:34.25,0:11:37.84,[Mux] Dialoghi,,0,0,0,Error,Dopo che mi avete aiutata, l'ultima volta,
+Dialogue: 90,0:11:34.25,0:11:37.84,[Mux] Dialoghi,,0,0,0,Overlap error,Dopo che mi avete aiutata, l'ultima volta,
 Dialogue: 90,0:11:36.04,0:11:37.84,[Mux] Overlap,,0,0,0,,Sembrano buoni, vero?
 Dialogue: 90,0:11:37.84,0:11:39.40,[Mux] Dialoghi,,0,0,0,,Sì! Davvero!
 Dialogue: 90,0:11:37.84,0:11:40.63,[Mux] Overlap,,0,0,0,,ho girovagato qua e là in ogni dove,
@@ -474,17 +469,17 @@ Dialogue: 90,0:22:57.77,0:22:59.81,[Mux] Dialoghi,,0,0,0,,Aiutami, Tsukune!
 Dialogue: 90,0:22:59.81,0:23:00.73,[Mux] Dialoghi,,0,0,0,,Gnam!
 Dialogue: 90,0:23:00.73,0:23:05.12,[Mux] Dialoghi,,0,0,0,,Chuu!
 Dialogue: 90,0:23:01.85,0:23:03.36,[Mux] Overlap,,0,0,0,,Ma ti pare il momento?!
-Dialogue: 90,0:23:02.26,0:23:05.23,[Mux] Dialoghi,,0,0,0,Error,Continua
+Dialogue: 90,0:23:02.26,0:23:05.23,[Mux] Dialoghi,,0,0,0,Overlap error,Continua
 Dialogue: 90,0:23:03.36,0:23:05.23,[Mux] Overlap,,0,0,0,,E poi, aspetta! Proprio ora il "continua"?!
 Dialogue: 90,0:24:38.20,0:24:53.22,[Mux] Dialoghi,,0,0,0,,Prossimo episodio
 Dialogue: 90,0:24:38.20,0:24:53.22,[Mux] Overlap,,0,0,0,,Episodio 2\NLa sorella e il vampiro
-Dialogue: 90,0:24:39.33,0:24:40.37,[Mux] Dialoghi,,0,0,0,Error,Aiutami, Tsukune!
-Dialogue: 90,0:24:40.37,0:24:41.70,[Mux] Dialoghi,,0,0,0,Error,C'è una lettera spaventosa!
-Dialogue: 90,0:24:41.70,0:24:43.11,[Mux] Dialoghi,,0,0,0,Error,Fa' vedere, Moka.
-Dialogue: 90,0:24:43.11,0:24:46.54,[Mux] Dialoghi,,0,0,0,Error,Aspetta, ma dice che non hai pagato\N e che quindi ti toglieranno la corrente!
-Dialogue: 90,0:24:46.54,0:24:48.21,[Mux] Dialoghi,,0,0,0,Error,Oddio... beh, allora,
-Dialogue: 90,0:24:48.21,0:24:49.11,[Mux] Dialoghi,,0,0,0,Error,nel prossimo episodio:
-Dialogue: 90,0:24:49.11,0:24:50.46,[Mux] Dialoghi,,0,0,0,Error,"La sorella e il vampiro".
-Dialogue: 90,0:24:50.46,0:24:52.79,[Mux] Dialoghi,,0,0,0,Error,E tanti altri bei morsi per te!
-Dialogue: 0,0:00:47.65,0:00:50.11,Default,,0,0,0,,{\pos(65,48.75)}Non pensavo a quello...
-Dialogue: 0,0:00:54.78,0:00:57.57,Default,,0,0,0,,{\move(65,48.75,615,798.75,213,123)}N-Ne sei sicura, Moka?
+Dialogue: 90,0:24:39.33,0:24:40.37,[Mux] Dialoghi,,0,0,0,Overlap error,Aiutami, Tsukune!
+Dialogue: 90,0:24:40.37,0:24:41.70,[Mux] Dialoghi,,0,0,0,Overlap error,C'è una lettera spaventosa!
+Dialogue: 90,0:24:41.70,0:24:43.11,[Mux] Dialoghi,,0,0,0,Overlap error,Fa' vedere, Moka.
+Dialogue: 90,0:24:43.11,0:24:46.54,[Mux] Dialoghi,,0,0,0,Overlap error,Aspetta, ma dice che non hai pagato\N e che quindi ti toglieranno la corrente!
+Dialogue: 90,0:24:46.54,0:24:48.21,[Mux] Dialoghi,,0,0,0,Overlap error,Oddio... beh, allora,
+Dialogue: 90,0:24:48.21,0:24:49.11,[Mux] Dialoghi,,0,0,0,Overlap error,nel prossimo episodio:
+Dialogue: 90,0:24:49.11,0:24:50.46,[Mux] Dialoghi,,0,0,0,Overlap error,"La sorella e il vampiro".
+Dialogue: 90,0:24:50.46,0:24:52.79,[Mux] Dialoghi,,0,0,0,Overlap error,E tanti altri bei morsi per te!
+Dialogue: 0,0:00:47.65,0:00:50.11,Default,,0,0,0,,{\pos(13,13)}Non pensavo a quello...
+Dialogue: 0,0:00:54.78,0:00:57.57,Default,,0,0,0,,{\move(13,13,123,213,213,123)}N-Ne sei sicura, Moka?

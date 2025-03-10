@@ -18,10 +18,12 @@ YCbCr Matrix: TV.709
 ScaledBorderAndShadow: yes
 
 [Aegisub Project Garbage]
-Video File: ../../../rosario-vampire/rosario-vampire-s1/Ep 01/Rosario to Vampire - S01E01 [BDRip 1920x1080 x264 FLAC] [Exp] [D5544DDD].mkv
+Audio File: Rosario to Vampire - S01E01 [BDRip 1920x1080 x264 FLAC] [Exp] [D5544DDD].mkv
+Video File: Rosario to Vampire - S01E01 [BDRip 1920x1080 x264 FLAC] [Exp] [D5544DDD].mkv
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.500000
+Video Position: 1063
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -34,8 +36,8 @@ Style: [Mux] Dialoghi,Gandhi Sans,74,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 90,0:00:30.18,0:00:33.14,[Mux] Dialoghi,,0,0,0,,{\i1}Mi chiamo Tsukune Aono, e ho 15 anni.
-Dialogue: 90,0:00:33.14,0:00:36.52,[Mux] Dialoghi,,0,0,0,,{\i1}Da questa primavera\N sarò un liceale bello fresco...
+Dialogue: 90,0:00:30.18,0:00:33.14,[Mux] Dialoghi,,0,0,0,,{\i1}M-M-M-Mi chiamo Tsukune Aono, e ho 15 anni.
+Dialogue: 90,0:00:33.14,0:00:36.52,[Mux] Dialoghi,,0,0,0,,{\i1}D-D-Da questa primavera\N sarò un liceale bello fresco...
 Dialogue: 90,0:00:36.52,0:00:38.48,[Mux] Dialoghi,,0,0,0,,{\i1}o almeno così pensavo.
 Dialogue: 90,0:00:53.03,0:00:55.24,[Mux] Dialoghi,,0,0,0,,Che roba...
 Dialogue: 90,0:00:55.24,0:00:57.33,[Mux] Dialoghi,,0,0,0,,Solo compagni maschi, e per tre anni di fila!

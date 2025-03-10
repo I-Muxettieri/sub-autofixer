@@ -128,6 +128,31 @@ def get_inline_alignment(text: str) -> Optional[int]:
     return int(match.group(1)) if match else None
 
 
+def normalize_dash(text: str) -> str:
+    buffer = ""
+    out = ""
+    is_tag = False
+    i = 0
+    while i < len(text):
+        if text[i] == "{":
+            is_tag = True
+        elif text[i] == "}":
+            is_tag = False
+        elif text[i] == " ":
+            buffer = ""
+        elif not is_tag and text[i] != "-":
+            buffer += text[i]
+        elif not is_tag:
+            if text[i + 1 :].lower().startswith(buffer.lower()):
+                out += "-" + buffer
+                print(buffer, text[i + 1 :], out)
+                i += len(buffer) + 1
+                continue
+        out += text[i]
+        i += 1
+    return out
+
+
 def restyler(subs: SSAFile, restyling_styles: Dict[str, SSAStyle], dialogue_layer: int):
     subs.styles.update(restyling_styles)
 
@@ -211,6 +236,10 @@ def restyler(subs: SSAFile, restyling_styles: Dict[str, SSAStyle], dialogue_laye
                 print(
                     f'Error: there are more than 2 lines in overlap for an{event_an}, set line with "Overlap error" effect'
                 )
+
+    # dialogie fix
+    for event in dialogue_events:
+        event.text = normalize_dash(event.text)
 
     subs.events = dialogue_events + type_events
 
